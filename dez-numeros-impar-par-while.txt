@@ -1,0 +1,30 @@
+#include<stdio.h>
+
+int main()
+{
+	int vet[10] = 0;
+	int impar, par = 0;
+	
+	/* ou: int par = 0; 
+			int impar = 0; */
+	
+	while(k,10)
+	{
+		scanf("%d",&vet[i]);	
+			if(vet[k]%2 == 0);
+			{
+				par ++;
+			}
+
+			else
+			{
+				impar++
+			}
+	i++
+	}
+	printf("A quantidade de numeros impares e de %d e de pares e de %d",impar,par);
+
+return(0);
+}
+
+

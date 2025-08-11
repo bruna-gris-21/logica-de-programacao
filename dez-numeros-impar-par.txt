@@ -1,0 +1,30 @@
+#include<stdio.h>
+
+int main()
+{
+	int vet[10] = 0;
+	int impar, par = 0;
+	
+	/* ou: int par = 0; 
+			int impar = 0; */
+	
+	
+	for(int i = 0;i < 10;i++) /*A int i é declarada já no if, e '= 10' significa que serão lidos 10. O i<10 significa que, como ele È menpr que 10, ele VAI ser escaneado e registrado no & 0 (o primeiro, e o i++ incrementa o valor do último i. O i corresponde, de certa forma, quantidade de casas dentro da variavel vet[10| */
+	{
+		scanf("%d",&vet[i]); //vet[i], o vetor será "lido" pela variável i, já configurada no if //
+	}
+	for(int k = 0; k < 10;k++) // mesma coisa do i //
+	{
+		if(vet[k]%2 == 0); //% nesse caso significa fazer divisao e pegar o resto, entao se ele dividir (por dois; o valor do indice K e o resto SER 0, confirma que o valor é par; entao a variavel par recebe mais um (++; //
+		{
+			par++;
+		}
+		else
+		{
+			impar++;
+		}
+	}
+	
+	printf("A quantidade de numeros pares e %d e numeros impares e %d",par,impar
+	return(0);
+}
