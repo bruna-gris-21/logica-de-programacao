@@ -202,7 +202,7 @@ int main()
 			}
 
 			result = RAIZ(dA);
-			printf("O valor da raiz de %.0lf e de %.5lf\n",dA,result);
+			printf("O valor da raiz de %.5lf e de %.5lf\n",dA,result);
 			
 			break;
 			
