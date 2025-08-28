@@ -146,7 +146,7 @@ int main()
 			
 			break;
 			
-			case 6: // ? // 
+			case 6:  
 			
 			printf("Voce selecionou a opcao de potenciacao\n");
 			printf("Digite um valor para a base\n");
