@@ -1,0 +1,83 @@
+
+COMANDOS P/ MARIA DB (boboleta) // DROP: destrói >estruturas< //
+
+Mostrar bancos: DML
+SHOW DATABASES;
+
+Criar bancos: DML				
+CREATE DATABASE [nome do banco];		
+
+Usar banco: DML
+USE [nome do banco];
+
+Excluir banco: DML
+DROP DATABASE [nome do banco];
+
+Criar tabela: DML
+CREATE TABLE [nome da tabela](
+ [atributo 1/field] TIPODOATRIBUTO(qnt de caracteres permitidos),  // o espaço é pra bonito portanto, faça // 
+ [atributo 2/field] ...			     // entre o atributo e o seu tipo PRECISA de espaço //
+);
+
+Mostrar tabelas:
+SHOW TABLES;
+
+Mostrar descrição técnica de uma tabela:
+DESC [nome da tabela];
+
+Apagar tabela:
+DROP TABLE [nome da mesa];
+
+SQL: INSERT, UPDATE, DELETE, SELECT
+
+Inserir registros dentro da tabela:
+INSERT INTO ([campos, da, tabela, que quer inserir alguma coisa]) // nao tem virgula aqui //
+VALUES ("valor pro 1 campo", "pro 2", "pro 3");
+
+Seleciona todos os registros de uma 
+SELECT * FROM ALUNOS;
+
+Filtrar uma informação:
+select * from professores where nome = "Kevin";
+(Procura o dado que especificou 
+SELECT * FROM [nome da abela] WHERE [condição];
+
+Where: trabalha com todos os operadores lógicos
+
+MANUTENÇÃO DE REGISTROS:
+Atualizar: // precisa predefinir, pra que ele n atualize todos //
+UPDATE [tabela que vai atualizar] SET [atributo p atualizar] = [alteração que quer fazer];
+update professores set salario = 2000.00; -> vai mudar pra todos os professores
+
+update professores set nome = "Debora Luft" {where nome = "Debora"}; // {especificação} //
+
+Apagar um resgistro
+DELETE [tabela] (apaga tudo);
+
+delete from professores where nome = "Kevin Guimaraes"; (apaga específico)
+
+Novo campo na tabela, alterando a estrutura de uma tabela:
+ALTER TABLE [tabela que quer alterar] ADD COLUMN [nome da coluna que quer add] (tipo);
+ALTER TABLE ALUNOS ADD COLUMN RA VARCHAR(5);
+
+Excluir campo:
+ALTER TABLE [tabela] DROP COLUMN [coluna pra deletar];
+
+Alterar tipo do campo, modificando um campo:
+ALTER TABLE [table] MODIFY COLUMN [nome] (tipo novo);
+
+
+
+
+...
+create table alunos(
+ nome VARCHAR(255),
+ telefone VARCHAR(16)
+);
+
+
+create table Professores(
+ nome VARCHAR(255),
+ salario DECIMAL(qnt de numeros à direita da virgula, qnt à esquerda),
+ email VARCHAR(255)
+);
