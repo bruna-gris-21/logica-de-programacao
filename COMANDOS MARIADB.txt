@@ -33,18 +33,18 @@ DROP TABLE [nome da mesa];
 COMANDOS SQL (INSERT, UPDATE, DELETE, SELECT):
 
 -> Inserir registros dentro da tabela:
-INSERT INTO ([campos, da, tabela, que quer inserir alguma coisa]) // nao tem virgula aqui //
+INSERT INTO [nome da tabela]([campos, da, tabela, que quer inserir alguma coisa]) // nao tem virgula aqui //
 VALUES ("valor pro 1 campo", "pro 2", "pro 3");
 
--> Seleciona todos os registros de uma 
+-> Seleciona todos os registros de uma tabela:
 SELECT * FROM ALUNOS;
 
--> Filtrar uma informação:
+-> Filtrar por uma informação:
 select * from professores where nome = "Kevin";
 (Procura o dado que especificou 
 SELECT * FROM [nome da abela] WHERE [condição];
 
-Where: trabalha com todos os operadores lógicos
+Where: trabalha com todos os operadores lógicos ( > < = !=)
 
 MANUTENÇÃO DE REGISTROS:
 
@@ -52,12 +52,17 @@ MANUTENÇÃO DE REGISTROS:
 UPDATE [tabela que vai atualizar] SET [atributo p atualizar] = [alteração que quer fazer];
 update professores set salario = 2000.00; -> vai mudar pra todos os professores
 
+UPDATE [tabela] SET [o que vai atualizar] = [novo nome/ numero] where [o que vai atualizar] = [nome/ numero antigo];
 update professores set nome = "Debora Luft" {where nome = "Debora"}; // {especificação} //
+"onde está Debora, colocar Debora Luft"
 
--> Apagar um resgistro
-DELETE [tabela] (apaga tudo);
+Se for mudar com base numa informação que está como NULL: 
+update professores set nome = "Debora Luft" where nome IS NULL;
 
-delete from professores where nome = "Kevin Guimaraes"; (apaga específico)
+-> Apagar um registro
+Apagar tudo: DELETE [tabela];
+
+Apagar uma info específica: delete from professores where nome = "Kevin Guimaraes"; (apaga o professor com o nome de Kevin)
 
 -> Novo campo na tabela, alterando a estrutura de uma tabela:
 ALTER TABLE [tabela que quer alterar] ADD COLUMN [nome da coluna que quer add] (tipo);
