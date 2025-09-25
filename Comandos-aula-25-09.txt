@@ -1,0 +1,115 @@
+Atividade 25-09
+
+Primary Key
+
+-> create database Escola;
+
+-> create table Alunos(
+ ID int not null PRIMARY KEY, //campo de nome ID, obrigatório, e não pode se repetir //
+ Nome varchar(255) not null
+);
+
+-> desc alunos;
+(o pri que vai aparecer significa que o campo onde ele tá não pode se repetir)
+
+-> insert into Alunos(ID, Nome)
+values(1,"Bruna");
+
+Se tentar inserir de novo:
+-> insert into Alunos(ID, Nome)
+values(1,"Bruna");
+
+ERROR 1062 (23000): Duplicate entry '1' for key 'PRIMARY' //tá tentando add o mesmo valor pra uma chave já existente // 
+
+-> update alunos set Nome = "Julya" where ID = 2;
+
+Definir um incremento pra cada vez que add um novo aluno, ter um ID novo e diferente dos que já existem:
+create table Alunos(
+ ID int not null primary key auto_increment,
+ Nome varchar(255) not null
+);
+
+Se add assim:
+ INSERT INTO ALUNOS(Id, Nome)
+    -> values(null,"Bruna");
+
+Mesmo se colocar como "null" na parte do ID, ele vai adicionar um número (e incrementar a partir dele, se add mais pessoas), porque é uma primary key.
+
+INSERT INTO ALUNOS(Id, Nome)
+    -> values(null,"Julya");
+INSERT INTO ALUNOS(Id, Nome)
+    -> values(null,"Maria");
+
++----+-------+
+| Id | Nome  |
++----+-------+
+|  1 | Bruna |
+|  2 | Julya |
+|  3 | Maria |
++----+-------+
+
+-> alter table alunos add column status boolean not null default(true); // adicionou coluna "status" do tipo booleano (só pode ser verdadeiro ou falso), obrigatório e, quando não recebesse nenhum registro (default), mostra como "true", automaticamente //
+
+Quando passa o valor "false" para o status:
+-> insert into alunos(Nome, status) values ("Cicleno", false);
+
++----+---------+--------+
+| Id | Nome    | status |
++----+---------+--------+
+|  1 | Bruna   |      1 |
+|  2 | Julya   |      1 |
+|  3 | Maria   |      1 |
+|  4 | Cicleno |      0 |
++----+---------+--------+
+
+-> alter table alunos add column ra varchar(100) not null default("Sem registro");
+
+-> insert alunos set ra = "123" where Id = 1;
+
+-> insert into alunos(nome) // sempre que "faltar" valores, ele insere os valores default, já programados //
+    -> values("Roberta"); 
+
++----+---------+--------+--------------+
+| Id | Nome    | status | ra           |
++----+---------+--------+--------------+
+|  1 | Bruna   |      1 | 123          |
+|  2 | Julya   |      1 | 124          |
+|  3 | Maria   |      1 | 125          |
+|  4 | Cicleno |      0 | 126          |
+|  5 | Roberta |      1 | Sem registro |
++----+---------+--------+--------------+
+
+-> SELECT * FROM ALUNOS ORDER BY NOME // da pra por com outros parâmetros, outras colunas //
+
+Procurar por letra: 
+-> select * from alunos where nome like "%G%"
+
+obs: %G% -> pessoas que tem a letra "G" no MEIO do nome
+     %G -> pessoas que TERMINAM com a letra "G"
+     G% -> pessoas que COMEÇAM com a letra "G"
+
+Com operadores lógicos: 
+-> SELECT * FROM ALUNOS WHERE NOME LIKE "B%" && STATUS = 1;
+
+Pessoas que não tenham a letra U no mome:
+-> SELECT * FROM ALUNOS WHERE NOME NOT LIKE "%U%";
+
+-> ALTER TABLE ALUNOS ADD COLUMN DATA_NSC DATE;
+
+-> insert into alunos(nome, data_nsc) values("Gabriel","2001-12-31");
+							aaaa-mm-dd
+
+Organização do comando:
+
+-> select 
+	* 
+from 
+	alunos 
+where 
+	data_nsc is not null 
+order by 
+	data_nsc asc;
+ 
+-> select * from alunos where data_nsc is not null order by data_nsc asc limit 2; // última parte limita, aparece só dois // 
+
+Pra encontrar a pessoa mais velha, limita a 1
