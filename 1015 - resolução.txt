@@ -1,0 +1,40 @@
+1015 - resolução
+
+#include <stdio.h>
+
+float raiz(float distancia);
+
+int main() {
+ 
+     float x1 = 0.0;
+     float x2 = 0.0;
+     float y1 = 0.0;
+     float y2 = 0.0;
+     float x = 0.0;
+     float distancia = 0.0;
+     
+     scanf("%f %f",&x1,&y1);
+     scanf("%f %f",&x2,&y2);
+     distancia = (x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1);
+     
+     distancia = raiz(distancia);
+     
+     printf("%.4f\n",distancia);
+     
+    return 0;
+}
+
+float raiz (float distancia)
+{
+    float x = 0.0;
+    float nova_distancia = 0.0;
+    
+    x = distancia;
+    for(int i = 0;i < 1000;i++)
+    {     
+         nova_distancia = 0.5 * (x + distancia / x);
+         x = nova_distancia;
+    }
+    return(x);
+    
+}

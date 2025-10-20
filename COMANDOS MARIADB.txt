@@ -1,0 +1,112 @@
+
+COMANDOS P/ MARIA DB (boboleta) // DROP: *destrói* >estruturas< //
+
+COMANDOS DML:
+
+-> Mostrar bancos: 
+SHOW DATABASES;
+
+-> Criar bancos: 				
+CREATE DATABASE [nome do banco];		
+
+-> Usar banco: 
+USE [nome do banco];
+
+-> Excluir banco: 
+DROP DATABASE [nome do banco];
+
+-> Criar tabela: 
+CREATE TABLE [nome da tabela](
+ [atributo 1/field] TIPODOATRIBUTO(qnt de caracteres permitidos),  // o espaço é pra bonito portanto, faça // 
+ [atributo 2/field] ...			     // entre o atributo e o seu tipo PRECISA de espaço //
+);
+
+-> Mostrar tabelas:
+SHOW TABLES;
+
+-> Mostrar descrição técnica de uma tabela:
+DESC [nome da tabela];
+
+-> Apagar tabela:
+DROP TABLE [nome da mesa];
+
+COMANDOS SQL (INSERT, UPDATE, DELETE, SELECT):
+
+-> Inserir registros dentro da tabela:
+INSERT INTO [nome da tabela]([campos, da, tabela, que quer inserir alguma coisa]) // nao tem virgula aqui //
+VALUES ("valor pro 1 campo", "pro 2", "pro 3");
+
+-> Seleciona todos os registros de uma tabela:
+SELECT * FROM ALUNOS;
+
+-> Filtrar por uma informação:
+select * from professores where nome = "Kevin";
+(Procura o dado que especificou 
+SELECT * FROM [nome da abela] WHERE [condição];
+
+Where: trabalha com todos os operadores lógicos ( > < = !=)
+
+MANUTENÇÃO DE REGISTROS:
+
+-> Atualizar: // precisa predefinir, pra que ele n atualize todos //
+UPDATE [tabela que vai atualizar] SET [atributo p atualizar] = [alteração que quer fazer];
+update professores set salario = 2000.00; -> vai mudar pra todos os professores
+
+UPDATE [tabela] SET [o que vai atualizar] = [novo nome/ numero] where [o que vai atualizar] = [nome/ numero antigo];
+update professores set nome = "Debora Luft" {where nome = "Debora"}; // {especificação} //
+"onde está Debora, colocar Debora Luft"
+
+Se for mudar com base numa informação que está como NULL: 
+update professores set nome = "Debora Luft" where nome IS NULL;
+
+-> Apagar um registro
+Apagar tudo: DELETE [tabela];
+
+Apagar uma info específica: delete from professores where nome = "Kevin Guimaraes"; (apaga o professor com o nome de Kevin)
+
+-> Novo campo na tabela, alterando a estrutura de uma tabela:
+ALTER TABLE [tabela que quer alterar] ADD COLUMN [nome da coluna que quer add] (tipo);
+ALTER TABLE ALUNOS ADD COLUMN RA VARCHAR(5);
+
+-> Excluir campo:
+ALTER TABLE [tabela] DROP COLUMN [coluna pra deletar];
+
+-> Alterar tipo do campo, modificando um campo:
+ALTER TABLE [table] MODIFY COLUMN [nome] (tipo novo);
+
+PRIMARY KEY:
+
+-> create table Alunos(
+ ID int not null PRIMARY KEY, //campo de nome ID, obrigatório, e não pode se repetir //
+ Nome varchar(255) not null
+);
+
+ORDENAÇÃO:
+
+-> SELECT * FROM ALUNOS ORDER BY NOME // vai por ascendente, por default // // da pra fazer com as outras colunas, também //
+  
+-> SELECT * FROM ALUNOS WHERE NOME LIKE "%G%"
+   %G% -> pessoas que tem a letra "G" no MEIO do nome
+   %G -> pessoas que TERMINAM com a letra "G"
+   G% -> pessoas que COMEÇAM com a letra "G"
+
+-> SELECT * FROM ALUNOS WHERE NOME NOT LIKE "%U%"; // todas as pessoas que NÃO tem a letra U no nome //
+
+Com operadores lógicos: 
+-> SELECT * FROM ALUNOS WHERE NOME LIKE "B%" && STATUS = 1;
+
+
+
+
+... exemplos: ...
+create table alunos(
+ nome VARCHAR(255),
+ telefone VARCHAR(16)
+);
+
+
+create table Professores(
+ nome VARCHAR(255),
+ salario DECIMAL(qnt de numeros à direita da virgula, qnt à esquerda),
+ email VARCHAR(255)
+);
